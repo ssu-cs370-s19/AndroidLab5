@@ -41,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
                 task.setRecipeListener(new RecipeSearchAsyncTask.RecipeListener() {
                     @Override
                     public void onRecipeCallback(List<RecipeModel> models) {
-
+                        RecipeViewAdapter adapter = new RecipeViewAdapter(models);
+                        recyclerView.setAdapter(adapter);
                     }
                 });
                 task.execute(searchEditText.getText().toString());
+
             }
         });
     }
