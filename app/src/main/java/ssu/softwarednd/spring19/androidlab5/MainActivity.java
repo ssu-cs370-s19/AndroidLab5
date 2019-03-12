@@ -2,10 +2,11 @@ package ssu.softwarednd.spring19.androidlab5;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -17,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText searchEditText;
     private Button searchButton;
 
-    private TextView recipeName;
-    private TextView recipeRating;
+    private RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
 
         searchEditText = findViewById(R.id.search_edit_text);
         searchButton = findViewById(R.id.recipe_search_button);
+        recyclerView = findViewById(R.id.recycler_view);
 
-        recipeName = findViewById(R.id.recipe_name);
-        recipeRating = findViewById(R.id.recipe_rating);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
+        recyclerView.setLayoutManager(layoutManager);
 
 
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -39,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 task.setRecipeListener(new RecipeSearchAsyncTask.RecipeListener() {
                     @Override
                     public void onRecipeCallback(List<RecipeModel> models) {
-                        RecipeModel first = models.get(0);
-                        recipeName.setText(first.getRecipeName());
-                        recipeRating.setText("Rating: " + first.getRating());
+
                     }
                 });
                 task.execute(searchEditText.getText().toString());
