@@ -1,8 +1,11 @@
 package ssu.softwarednd.spring19.androidlab5.utility;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 import ssu.softwarednd.spring19.androidlab5.models.RecipeModel;
+import ssu.softwarednd.spring19.androidlab5.models.RecipeResponse;
 
 public class RecipeParser {
 
@@ -19,8 +22,13 @@ public class RecipeParser {
     public static List<RecipeModel> getMatches(String json) {
 
         // parse `json`, return a list of recipes
+        Gson gson = new Gson();
 
-        return null;
+        RecipeResponse response = gson.fromJson(json, RecipeResponse.class);
+
+        List<RecipeModel> recipes = response.getRecipes();
+
+        return recipes;
     }
 
 }
