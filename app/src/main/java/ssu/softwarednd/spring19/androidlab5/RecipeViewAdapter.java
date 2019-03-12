@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import ssu.softwarednd.spring19.androidlab5.models.RecipeModel;
+import ssu.softwarednd.spring19.androidlab5.models.RecipeResponse;
 
 
 public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewHolder> {
@@ -29,12 +30,13 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder recipeViewHolder, int position) {
-
+        RecipeModel model = recipeCollection.get(position);
+        recipeViewHolder.bindView(model);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return recipeCollection.size();
     }
 
 }
