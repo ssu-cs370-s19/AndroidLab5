@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 task.setRecipeListener(new RecipeSearchAsyncTask.RecipeListener() {
                     @Override
                     public void onRecipeCallback(List<RecipeModel> models) {
-
+                        RecipeViewAdapter recipeViewAdapter = new RecipeViewAdapter(models);
+                        recyclerView.setAdapter(recipeViewAdapter);
                     }
                 });
                 task.execute(searchEditText.getText().toString());
