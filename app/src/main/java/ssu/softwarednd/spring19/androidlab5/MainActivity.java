@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         searchEditText = findViewById(R.id.search_edit_text);
         searchButton = findViewById(R.id.recipe_search_button);
-        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view
+        );
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 task.setRecipeListener(new RecipeSearchAsyncTask.RecipeListener() {
                     @Override
                     public void onRecipeCallback(List<RecipeModel> models) {
-
+                        RecipeViewAdapter adapter = new RecipeViewAdapter(models);
+                        recyclerView.setAdapter(adapter);
                     }
                 });
                 task.execute(searchEditText.getText().toString());
