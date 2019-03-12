@@ -7,8 +7,8 @@ public class RecipeResponse {
 
     private int totalMatchCount;
 
+    @SerializedName("matches")
     private List<RecipeModel> recipes;
-
 
     public int getTotalMatchCount() {
         return totalMatchCount;

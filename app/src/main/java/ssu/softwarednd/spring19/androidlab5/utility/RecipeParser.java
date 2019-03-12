@@ -19,6 +19,11 @@ public class RecipeParser {
     public static List<RecipeModel> getMatches(String json) {
 
         // parse `json`, return a list of recipes
+        // create an instance of Gson
+        Gson gson = new Gson();
+
+        // use Gson to inflate a RecipeResponse
+        RecipeResponse response = gson.fromJson(json, RecipeResponse.class);
 
         return null;
     }
