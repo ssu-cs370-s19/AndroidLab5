@@ -42,7 +42,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onRecipeCallback(List<RecipeModel> models) {
 
+                        RecipeViewAdapter adapter = new RecipeViewAdapter(models);
+                        recyclerView.setAdapter(adapter);
+
                     }
+
+
                 });
                 task.execute(searchEditText.getText().toString());
             }
